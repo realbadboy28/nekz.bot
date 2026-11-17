@@ -1,0 +1,33 @@
+{
+  "name": "nekz-whatsapp-ai",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Nekz desktop WhatsApp AI auto-responder and control dashboard",
+  "main": "desktop/main.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "desktop": "electron .",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win nsis",
+    "on": "node src/cli.js on",
+    "off": "node src/cli.js off",
+    "status": "node src/cli.js status"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.18",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "electron": "^45.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.nekz.whatsapp-ai",
+    "productName": "Nekz WhatsApp AI",
+    "directories": { "output": "release" },
+    "files": ["desktop/**/*", "src/**/*", "package.json", "node_modules/**/*"],
+    "win": { "target": "nsis" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "createStartMenuShortcut": true }
+  }
+}
